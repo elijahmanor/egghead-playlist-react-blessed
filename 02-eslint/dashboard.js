@@ -62,7 +62,4 @@ screen.key(
   () => process.exit(0)
 )
 
-const component = render(
-  <App />,
-  screen
-)
+render(<App />, screen)
