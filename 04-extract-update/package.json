@@ -1,0 +1,30 @@
+{
+  "name": "egghead-playlist-react-blessed",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elijahmanor/egghead-playlist-react-blessed.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/elijahmanor/egghead-playlist-react-blessed/issues"
+  },
+  "homepage": "https://github.com/elijahmanor/egghead-playlist-react-blessed#readme",
+  "dependencies": {
+    "@babel/core": "^7.10.3",
+    "@babel/preset-env": "^7.10.3",
+    "@babel/preset-react": "^7.10.1",
+    "@babel/register": "^7.10.3",
+    "blessed": "^0.1.81",
+    "figlet": "^1.4.0",
+    "react": "^16.13.1",
+    "react-blessed": "^0.6.2"
+  }
+}

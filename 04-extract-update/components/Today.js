@@ -3,8 +3,6 @@ import React, {
   useEffect,
   useRef
 } from 'react'
-import blessed from 'blessed'
-import { render } from 'react-blessed'
 import figlet from 'figlet'
 
 const FONTS = [
@@ -22,7 +20,10 @@ const FONTS = [
   'Small Shadow'
 ]
 
-const App = () => {
+
+export default function Today({
+  updateInterval = 1000
+}) {
   const [
     count,
     setCount
@@ -31,11 +32,29 @@ const App = () => {
   useEffect(() => {
     timer.current = setTimeout(
       () => setCount(count + 1),
-      5000
+      updateInterval
     )
     return () =>
       clearTimeout(timer.current)
   }, [count])
+
+  const [weather, setWeather] = useState("")
+  const weatherTimer = useRef(null)
+  useEffect(() => {
+    console.log( "in weather useEffect")
+    await fetchWeather()
+    weatherTimer.current = setTimeout(
+      () => {
+        const current = await fetchWeather(city); 
+        setWeather(current)
+      },
+      updateInterval
+    )
+    return () =>
+      clearTimeout(
+        weatherTimer.current
+      )
+  }, [])
 
   const time = figlet.textSync(
     new Date().toLocaleString(
@@ -71,26 +90,9 @@ const App = () => {
         border: { fg: 'blue' }
       }}
     >
-      <text>{`${date}
+      {`${date}
 
-${time}`}</text>
+${time}`}
     </box>
   )
 }
-
-const screen = blessed.screen({
-  autoPadding: true,
-  smartCSR: true,
-  title:
-    'react-blessed hello world'
-})
-
-screen.key(
-  ['escape', 'q', 'C-c'],
-  () => process.exit(0)
-)
-
-const component = render(
-  <App />,
-  screen
-)
