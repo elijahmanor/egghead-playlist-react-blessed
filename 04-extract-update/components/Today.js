@@ -1,9 +1,6 @@
-import React, {
-  useState,
-  useEffect,
-  useRef
-} from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import figlet from 'figlet'
+import useInterval from '@use-it/interval'
 
 const FONTS = [
   'Straight',
@@ -20,64 +17,30 @@ const FONTS = [
   'Small Shadow'
 ]
 
+export default function Today({ updateInterval = 1000 }) {
+  const [fontIndex, setFontIndex] = useState(0)
+  const [now, setNow] = useState(new Date())
 
-export default function Today({
-  updateInterval = 1000
-}) {
-  const [
-    count,
-    setCount
-  ] = useState(0)
-  const timer = useRef(null)
-  useEffect(() => {
-    timer.current = setTimeout(
-      () => setCount(count + 1),
-      updateInterval
-    )
-    return () =>
-      clearTimeout(timer.current)
-  }, [count])
-
-  const [weather, setWeather] = useState("")
-  const weatherTimer = useRef(null)
-  useEffect(() => {
-    console.log( "in weather useEffect")
-    await fetchWeather()
-    weatherTimer.current = setTimeout(
-      () => {
-        const current = await fetchWeather(city); 
-        setWeather(current)
-      },
-      updateInterval
-    )
-    return () =>
-      clearTimeout(
-        weatherTimer.current
-      )
-  }, [])
+  useInterval(() => {
+    setNow(new Date())
+    setFontIndex(fontIndex + 1)
+  }, updateInterval)
 
   const time = figlet.textSync(
-    new Date().toLocaleString(
-      'en-US',
-      {
-        hour: '2-digit',
-        minute: '2-digit',
-        hour12: true
-      }
-    ),
+    now.toLocaleString('en-US', {
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: true
+    }),
     {
-      font:
-        FONTS[count % FONTS.length]
+      font: FONTS[fontIndex % FONTS.length]
     }
   )
-  const date = new Date().toLocaleString(
-    'en-US',
-    {
-      month: 'long',
-      day: 'numeric',
-      year: 'numeric'
-    }
-  )
+  const date = now.toLocaleString('en-US', {
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric'
+  })
 
   return (
     <box
