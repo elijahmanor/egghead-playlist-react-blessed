@@ -4,7 +4,7 @@ import { render } from 'react-blessed'
 import Today from './components/Today'
 
 const App = () => {
-  return <Today updateInterval={5000} />
+  return <Today updateInterval={500} />
 }
 
 const screen = blessed.screen({

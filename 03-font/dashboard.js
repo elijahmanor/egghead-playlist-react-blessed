@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React from 'react'
 import blessed from 'blessed'
 import { render } from 'react-blessed'
 import figlet from 'figlet'
@@ -19,26 +19,26 @@ const FONTS = [
 ]
 
 const App = () => {
-  const [count, setCount] = useState(0)
-  const timer = useRef(null)
-  useEffect(() => {
-    timer.current = setTimeout(() => setCount(count + 1), 1000)
-    return () => clearTimeout(timer.current)
-  }, [count])
+  const [fontIndex, setFontIndex] = React.useState(0)
+  React.useEffect(() => {
+    const timer = setTimeout(() => setFontIndex(fontIndex + 1), 1000)
+    return () => clearTimeout(timer)
+  }, [fontIndex])
 
-  let date = new Date().toLocaleString('en-US', {
+  const now = new Date()
+  const date = now.toLocaleString('en-US', {
     month: 'long',
     day: 'numeric',
     year: 'numeric'
   })
-  let time = figlet.textSync(
-    new Date().toLocaleString('en-US', {
+  const time = figlet.textSync(
+    now.toLocaleString('en-US', {
       hour: '2-digit',
       minute: '2-digit',
       hour12: true
     }),
     {
-      font: FONTS[count % FONTS.length]
+      font: FONTS[fontIndex % FONTS.length]
     }
   )
 

@@ -19,18 +19,17 @@ const FONTS = [
 
 export default function Today({ updateInterval = 1000 }) {
   const [fontIndex, setFontIndex] = React.useState(0)
-  const [now, setNow] = React.useState(new Date())
   useInterval(() => {
-    setNow(new Date())
     setFontIndex(fontIndex + 1)
   }, updateInterval)
 
-  let date = now.toLocaleString('en-US', {
+  const now = new Date()
+  const date = now.toLocaleString('en-US', {
     month: 'long',
     day: 'numeric',
     year: 'numeric'
   })
-  let time = figlet.textSync(
+  const time = figlet.textSync(
     now.toLocaleString('en-US', {
       hour: '2-digit',
       minute: '2-digit',

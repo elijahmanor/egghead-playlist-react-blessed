@@ -1,37 +1,23 @@
-import React, {
-  useState,
-  useEffect,
-  useRef
-} from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import blessed from 'blessed'
 import { render } from 'react-blessed'
 
 const App = () => {
-  const [
-    count,
-    setCount
-  ] = useState(0)
+  const [count, setCount] = useState(0)
   const timer = useRef(null)
   useEffect(() => {
-    timer.current = setTimeout(
-      () => setCount(count + 1),
-      1000
-    )
-    return () =>
-      clearTimeout(timer.current)
+    timer.current = setTimeout(() => setCount(count + 1), 1000)
+    return () => clearTimeout(timer.current)
   }, [count])
 
-  let dateTime = new Date().toLocaleString(
-    'en-US',
-    {
-      month: 'long',
-      day: 'numeric',
-      year: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit',
-      hour12: true
-    }
-  )
+  let dateTime = new Date().toLocaleString('en-US', {
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: true
+  })
 
   return (
     <box
@@ -54,16 +40,9 @@ Count: ${count}`}
 const screen = blessed.screen({
   autoPadding: true,
   smartCSR: true,
-  title:
-    'react-blessed hello world'
+  title: 'react-blessed hello world'
 })
 
-screen.key(
-  ['escape', 'q', 'C-c'],
-  () => process.exit(0)
-)
+screen.key(['escape', 'q', 'C-c'], () => process.exit(0))
 
-const component = render(
-  <App />,
-  screen
-)
+const component = render(<App />, screen)
