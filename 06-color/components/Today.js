@@ -6,6 +6,8 @@ import fs from 'fs'
 import path from 'path'
 import useInterval from '@use-it/interval'
 import { useQuery } from 'react-query'
+import chalk from 'chalk'
+import gradient from 'gradient-string'
 
 const FONTS = [
   'Straight',
@@ -49,7 +51,9 @@ const formatWeather = ([results]) => {
   const low = `${forecast[1].low}°${degreeType}`
   const high = `${forecast[1].high}°${degreeType}`
 
-  return `${temperature} and ${conditions} (${low} → ${high})`
+  return `${chalk.yellow(temperature)} and ${chalk.green(
+    conditions
+  )} (${chalk.blue(low)} → ${chalk.red(high)})`
 }
 
 export default function Today({
@@ -64,21 +68,25 @@ export default function Today({
     setNow(new Date())
   }, 60000) // 1 min
 
-  const time = figlet.textSync(
-    now.toLocaleString('en-US', {
-      hour: '2-digit',
-      minute: '2-digit',
-      hour12: true
-    }),
-    {
-      font: FONTS[fontIndex % FONTS.length]
-    }
+  const time = gradient.atlas(
+    figlet.textSync(
+      now.toLocaleString('en-US', {
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: true
+      }),
+      {
+        font: FONTS[fontIndex % FONTS.length]
+      }
+    )
   )
-  const date = now.toLocaleString('en-US', {
-    month: 'long',
-    day: 'numeric',
-    year: 'numeric'
-  })
+  const date = chalk.blue(
+    now.toLocaleString('en-US', {
+      month: 'long',
+      day: 'numeric',
+      year: 'numeric'
+    })
+  )
 
   const { status, data, error } = useQuery(
     ['weather', { search, degreeType }],
