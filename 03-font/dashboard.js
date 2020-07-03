@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import blessed from 'blessed'
 import { render } from 'react-blessed'
 
 const App = () => {
   const [count, setCount] = useState(0)
+  const timer = useRef(null)
   useEffect(() => {
-    const timer = setTimeout(() => setCount(count + 1), 1000)
-    return () => clearTimeout(timer)
+    timer.current = setTimeout(() => setCount(count + 1), 1000)
+    return () => clearTimeout(timer.current)
   }, [count])
 
   let dateTime = new Date().toLocaleString('en-US', {
