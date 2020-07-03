@@ -1,18 +1,11 @@
-import React, {
-  useState,
-  useEffect,
-  useRef
-} from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import figlet from 'figlet'
 import weather from 'weather-js'
 import util from 'util'
 import fs from 'fs'
 import path from 'path'
 import useInterval from '@use-it/interval'
-
-const findWeather = util.promisify(
-  weather.find
-)
+import { useQuery } from 'react-query'
 
 const FONTS = [
   'Straight',
@@ -29,33 +22,18 @@ const FONTS = [
   'Small Shadow'
 ]
 
-const getWeather = async (
-  city,
-  degreeType
-) => {
-  console.log('getting weather...')
-  const [
-    results
-  ] = await findWeather({
-    search: city,
-    degreeType
-  })
+const findWeather = util.promisify(weather.find)
+
+const fetchWeather = (key, options) => findWeather(options)
+
+const formatWeather = ([results]) => {
+  const degreeType = results.location.degreetype
   const forecast = {
     temperature: `${results.current.temperature}°${degreeType}`,
-    conditions:
-      results.current.skytext,
+    conditions: results.current.skytext,
     low: `${results.forecast[1].low}°${degreeType}`,
     high: `${results.forecast[1].high}°${degreeType}`
   }
-  fs.appendFileSync(
-    '.dev.debug',
-    `\n${JSON.stringify(
-      { results, forecast },
-      null,
-      2
-    )}`,
-    'utf-8'
-  )
   return `${forecast.temperature} and ${forecast.conditions} (${forecast.low} → ${forecast.high})`
 }
 
@@ -64,82 +42,37 @@ export default function Today({
   city = 'Nashville',
   degreeType = 'F'
 }) {
-  const [
-    count,
-    setCount
-  ] = useState(0)
-  const timer = useRef(null)
-  useEffect(() => {
-    timer.current = setTimeout(
-      () => setCount(count + 1),
-      60000 // 1 min
-    )
-    return () =>
-      clearTimeout(timer.current)
-  }, [count])
+  const [fontIndex, setFontIndex] = useState(0)
+  const [now, setNow] = useState(new Date())
 
-  const [
-    weather,
-    setWeather
-  ] = useState('')
-
-  // useInterval(() => {
-  //   const fetchData = async () => {
-  //     const current = await getWeather(
-  //       city,
-  //       degreeType
-  //     )
-  //     setWeather(current)
-  //   }
-
-  //   fetchData()
-  // }, updateInterval)
-
-  const weatherTimer = useRef(null)
-  useEffect(() => {
-    const fetchData = async () => {
-      const current = await getWeather(
-        city,
-        degreeType
-      )
-      setWeather(current)
-    }
-
-    weatherTimer.current = setInterval(
-      () => {
-        fetchData()
-      },
-      updateInterval
-    )
-
-    fetchData()
-
-    return () =>
-      clearTimeout(
-        weatherTimer.current
-      )
-  }, [])
+  useInterval(() => {
+    setNow(new Date())
+    setFontIndex(fontIndex + 1)
+  }, updateInterval)
 
   const time = figlet.textSync(
-    new Date().toLocaleString(
-      'en-US',
-      {
-        hour: '2-digit',
-        minute: '2-digit',
-        hour12: true
-      }
-    ),
+    now.toLocaleString('en-US', {
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: true
+    }),
     {
-      font:
-        FONTS[count % FONTS.length]
+      font: FONTS[fontIndex % FONTS.length]
     }
   )
-  const date = new Date().toLocaleString(
-    'en-US',
+  const date = now.toLocaleString('en-US', {
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric'
+  })
+
+  const search = 'Nashville, TN'
+  const { status, data, error } = useQuery(
+    ['user', { search, degreeType: 'F' }],
+    fetchWeather,
     {
-      month: 'long',
-      day: 'numeric',
-      year: 'numeric'
+      refetchInterval: 60000,
+      retry: 3
     }
   )
 
@@ -158,7 +91,9 @@ export default function Today({
 
 ${time}
 
-${weather}`}
+${
+  status === 'loading' ? 'Loading...' : error ? 'Error!' : formatWeather(data)
+}`}
     </box>
   )
 }

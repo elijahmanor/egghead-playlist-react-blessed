@@ -1,83 +1,325 @@
 
+{}
+{}
 {
-  "results": {
-    "location": {
-      "name": "Nashville, TN",
-      "lat": "36.167",
-      "long": "-86.783",
-      "timezone": "-5",
-      "alert": "",
-      "degreetype": "F",
-      "imagerelativeurl": "http://blob.weather.microsoft.com/static/weather4/en-us/"
-    },
-    "current": {
-      "temperature": "73",
-      "skycode": "29",
-      "skytext": "Partly Cloudy",
-      "date": "2020-07-01",
-      "observationtime": "23:35:00",
-      "observationpoint": "Nashville, TN",
-      "feelslike": "73",
-      "humidity": "94",
-      "winddisplay": "1 mph North",
-      "day": "Wednesday",
-      "shortday": "Wed",
-      "windspeed": "1 mph",
-      "imageUrl": "http://blob.weather.microsoft.com/static/weather4/en-us/law/29.gif"
-    },
-    "forecast": [
-      {
-        "low": "72",
-        "high": "82",
-        "skycodeday": "27",
-        "skytextday": "Mostly Cloudy",
-        "date": "2020-07-01",
-        "day": "Wednesday",
-        "shortday": "Wed",
-        "precip": "20"
+  "results": [
+    {
+      "location": {
+        "name": "Nashville, TN",
+        "lat": "36.167",
+        "long": "-86.783",
+        "timezone": "-5",
+        "alert": "",
+        "degreetype": "F",
+        "imagerelativeurl": "http://blob.weather.microsoft.com/static/weather4/en-us/"
       },
-      {
-        "low": "72",
-        "high": "87",
-        "skycodeday": "30",
-        "skytextday": "Partly Sunny",
+      "current": {
+        "temperature": "80",
+        "skycode": "31",
+        "skytext": "Clear",
         "date": "2020-07-02",
+        "observationtime": "23:25:00",
+        "observationpoint": "Nashville, TN",
+        "feelslike": "80",
+        "humidity": "77",
+        "winddisplay": "2 mph Northeast",
         "day": "Thursday",
         "shortday": "Thu",
-        "precip": "100"
+        "windspeed": "2 mph",
+        "imageUrl": "http://blob.weather.microsoft.com/static/weather4/en-us/law/31.gif"
       },
-      {
-        "low": "72",
-        "high": "90",
-        "skycodeday": "30",
-        "skytextday": "Partly Sunny",
-        "date": "2020-07-03",
-        "day": "Friday",
-        "shortday": "Fri",
-        "precip": "0"
+      "forecast": [
+        {
+          "low": "69",
+          "high": "82",
+          "skycodeday": "29",
+          "skytextday": "Partly Cloudy",
+          "date": "2020-07-01",
+          "day": "Wednesday",
+          "shortday": "Wed",
+          "precip": ""
+        },
+        {
+          "low": "73",
+          "high": "90",
+          "skycodeday": "34",
+          "skytextday": "Mostly Sunny",
+          "date": "2020-07-02",
+          "day": "Thursday",
+          "shortday": "Thu",
+          "precip": "0"
+        },
+        {
+          "low": "72",
+          "high": "91",
+          "skycodeday": "34",
+          "skytextday": "Mostly Sunny",
+          "date": "2020-07-03",
+          "day": "Friday",
+          "shortday": "Fri",
+          "precip": "0"
+        },
+        {
+          "low": "73",
+          "high": "91",
+          "skycodeday": "30",
+          "skytextday": "Partly Sunny",
+          "date": "2020-07-04",
+          "day": "Saturday",
+          "shortday": "Sat",
+          "precip": "10"
+        },
+        {
+          "low": "75",
+          "high": "93",
+          "skycodeday": "32",
+          "skytextday": "Sunny",
+          "date": "2020-07-05",
+          "day": "Sunday",
+          "shortday": "Sun",
+          "precip": "30"
+        }
+      ]
+    },
+    {
+      "location": {
+        "name": "Nashville-Davidson, TN",
+        "lat": "36.166",
+        "long": "-86.779",
+        "timezone": "-5",
+        "alert": "",
+        "degreetype": "F",
+        "imagerelativeurl": "http://blob.weather.microsoft.com/static/weather4/en-us/"
       },
-      {
-        "low": "75",
-        "high": "92",
-        "skycodeday": "28",
-        "skytextday": "Mostly Cloudy",
-        "date": "2020-07-04",
-        "day": "Saturday",
-        "shortday": "Sat",
-        "precip": "10"
+      "current": {
+        "temperature": "80",
+        "skycode": "31",
+        "skytext": "Clear",
+        "date": "2020-07-02",
+        "observationtime": "23:25:00",
+        "observationpoint": "Nashville-Davidson, TN",
+        "feelslike": "80",
+        "humidity": "77",
+        "winddisplay": "2 mph Northeast",
+        "day": "Thursday",
+        "shortday": "Thu",
+        "windspeed": "2 mph",
+        "imageUrl": "http://blob.weather.microsoft.com/static/weather4/en-us/law/31.gif"
       },
-      {
-        "low": "75",
-        "high": "92",
-        "skycodeday": "34",
-        "skytextday": "Mostly Sunny",
-        "date": "2020-07-05",
-        "day": "Sunday",
-        "shortday": "Sun",
-        "precip": "30"
-      }
-    ]
-  }
+      "forecast": [
+        {
+          "low": "69",
+          "high": "82",
+          "skycodeday": "29",
+          "skytextday": "Partly Cloudy",
+          "date": "2020-07-01",
+          "day": "Wednesday",
+          "shortday": "Wed",
+          "precip": ""
+        },
+        {
+          "low": "73",
+          "high": "90",
+          "skycodeday": "34",
+          "skytextday": "Mostly Sunny",
+          "date": "2020-07-02",
+          "day": "Thursday",
+          "shortday": "Thu",
+          "precip": "0"
+        },
+        {
+          "low": "72",
+          "high": "91",
+          "skycodeday": "34",
+          "skytextday": "Mostly Sunny",
+          "date": "2020-07-03",
+          "day": "Friday",
+          "shortday": "Fri",
+          "precip": "0"
+        },
+        {
+          "low": "73",
+          "high": "91",
+          "skycodeday": "30",
+          "skytextday": "Partly Sunny",
+          "date": "2020-07-04",
+          "day": "Saturday",
+          "shortday": "Sat",
+          "precip": "10"
+        },
+        {
+          "low": "75",
+          "high": "93",
+          "skycodeday": "32",
+          "skytextday": "Sunny",
+          "date": "2020-07-05",
+          "day": "Sunday",
+          "shortday": "Sun",
+          "precip": "30"
+        }
+      ]
+    }
+  ]
+}
+{
+  "results": [
+    {
+      "location": {
+        "name": "Nashville, TN",
+        "lat": "36.167",
+        "long": "-86.783",
+        "timezone": "-5",
+        "alert": "",
+        "degreetype": "F",
+        "imagerelativeurl": "http://blob.weather.microsoft.com/static/weather4/en-us/"
+      },
+      "current": {
+        "temperature": "80",
+        "skycode": "31",
+        "skytext": "Clear",
+        "date": "2020-07-02",
+        "observationtime": "23:25:00",
+        "observationpoint": "Nashville, TN",
+        "feelslike": "80",
+        "humidity": "77",
+        "winddisplay": "2 mph Northeast",
+        "day": "Thursday",
+        "shortday": "Thu",
+        "windspeed": "2 mph",
+        "imageUrl": "http://blob.weather.microsoft.com/static/weather4/en-us/law/31.gif"
+      },
+      "forecast": [
+        {
+          "low": "69",
+          "high": "82",
+          "skycodeday": "29",
+          "skytextday": "Partly Cloudy",
+          "date": "2020-07-01",
+          "day": "Wednesday",
+          "shortday": "Wed",
+          "precip": ""
+        },
+        {
+          "low": "73",
+          "high": "90",
+          "skycodeday": "34",
+          "skytextday": "Mostly Sunny",
+          "date": "2020-07-02",
+          "day": "Thursday",
+          "shortday": "Thu",
+          "precip": "0"
+        },
+        {
+          "low": "72",
+          "high": "91",
+          "skycodeday": "34",
+          "skytextday": "Mostly Sunny",
+          "date": "2020-07-03",
+          "day": "Friday",
+          "shortday": "Fri",
+          "precip": "0"
+        },
+        {
+          "low": "73",
+          "high": "91",
+          "skycodeday": "30",
+          "skytextday": "Partly Sunny",
+          "date": "2020-07-04",
+          "day": "Saturday",
+          "shortday": "Sat",
+          "precip": "10"
+        },
+        {
+          "low": "75",
+          "high": "93",
+          "skycodeday": "32",
+          "skytextday": "Sunny",
+          "date": "2020-07-05",
+          "day": "Sunday",
+          "shortday": "Sun",
+          "precip": "30"
+        }
+      ]
+    },
+    {
+      "location": {
+        "name": "Nashville-Davidson, TN",
+        "lat": "36.166",
+        "long": "-86.779",
+        "timezone": "-5",
+        "alert": "",
+        "degreetype": "F",
+        "imagerelativeurl": "http://blob.weather.microsoft.com/static/weather4/en-us/"
+      },
+      "current": {
+        "temperature": "80",
+        "skycode": "31",
+        "skytext": "Clear",
+        "date": "2020-07-02",
+        "observationtime": "23:25:00",
+        "observationpoint": "Nashville-Davidson, TN",
+        "feelslike": "80",
+        "humidity": "77",
+        "winddisplay": "2 mph Northeast",
+        "day": "Thursday",
+        "shortday": "Thu",
+        "windspeed": "2 mph",
+        "imageUrl": "http://blob.weather.microsoft.com/static/weather4/en-us/law/31.gif"
+      },
+      "forecast": [
+        {
+          "low": "69",
+          "high": "82",
+          "skycodeday": "29",
+          "skytextday": "Partly Cloudy",
+          "date": "2020-07-01",
+          "day": "Wednesday",
+          "shortday": "Wed",
+          "precip": ""
+        },
+        {
+          "low": "73",
+          "high": "90",
+          "skycodeday": "34",
+          "skytextday": "Mostly Sunny",
+          "date": "2020-07-02",
+          "day": "Thursday",
+          "shortday": "Thu",
+          "precip": "0"
+        },
+        {
+          "low": "72",
+          "high": "91",
+          "skycodeday": "34",
+          "skytextday": "Mostly Sunny",
+          "date": "2020-07-03",
+          "day": "Friday",
+          "shortday": "Fri",
+          "precip": "0"
+        },
+        {
+          "low": "73",
+          "high": "91",
+          "skycodeday": "30",
+          "skytextday": "Partly Sunny",
+          "date": "2020-07-04",
+          "day": "Saturday",
+          "shortday": "Sat",
+          "precip": "10"
+        },
+        {
+          "low": "75",
+          "high": "93",
+          "skycodeday": "32",
+          "skytextday": "Sunny",
+          "date": "2020-07-05",
+          "day": "Sunday",
+          "shortday": "Sun",
+          "precip": "30"
+        }
+      ]
+    }
+  ]
 }
 {
   "results": {
@@ -91,566 +333,56 @@
       "imagerelativeurl": "http://blob.weather.microsoft.com/static/weather4/en-us/"
     },
     "current": {
-      "temperature": "73",
-      "skycode": "29",
-      "skytext": "Partly Cloudy",
-      "date": "2020-07-01",
-      "observationtime": "23:35:00",
-      "observationpoint": "Nashville, TN",
-      "feelslike": "73",
-      "humidity": "94",
-      "winddisplay": "1 mph North",
-      "day": "Wednesday",
-      "shortday": "Wed",
-      "windspeed": "1 mph",
-      "imageUrl": "http://blob.weather.microsoft.com/static/weather4/en-us/law/29.gif"
-    },
-    "forecast": [
-      {
-        "low": "72",
-        "high": "82",
-        "skycodeday": "27",
-        "skytextday": "Mostly Cloudy",
-        "date": "2020-07-01",
-        "day": "Wednesday",
-        "shortday": "Wed",
-        "precip": "20"
-      },
-      {
-        "low": "72",
-        "high": "87",
-        "skycodeday": "30",
-        "skytextday": "Partly Sunny",
-        "date": "2020-07-02",
-        "day": "Thursday",
-        "shortday": "Thu",
-        "precip": "100"
-      },
-      {
-        "low": "72",
-        "high": "90",
-        "skycodeday": "30",
-        "skytextday": "Partly Sunny",
-        "date": "2020-07-03",
-        "day": "Friday",
-        "shortday": "Fri",
-        "precip": "0"
-      },
-      {
-        "low": "75",
-        "high": "92",
-        "skycodeday": "28",
-        "skytextday": "Mostly Cloudy",
-        "date": "2020-07-04",
-        "day": "Saturday",
-        "shortday": "Sat",
-        "precip": "10"
-      },
-      {
-        "low": "75",
-        "high": "92",
-        "skycodeday": "34",
-        "skytextday": "Mostly Sunny",
-        "date": "2020-07-05",
-        "day": "Sunday",
-        "shortday": "Sun",
-        "precip": "30"
-      }
-    ]
-  }
-}
-{
-  "results": {
-    "location": {
-      "name": "Nashville, TN",
-      "lat": "36.167",
-      "long": "-86.783",
-      "timezone": "-5",
-      "alert": "",
-      "degreetype": "F",
-      "imagerelativeurl": "http://blob.weather.microsoft.com/static/weather4/en-us/"
-    },
-    "current": {
-      "temperature": "73",
-      "skycode": "29",
-      "skytext": "Partly Cloudy",
-      "date": "2020-07-01",
-      "observationtime": "23:45:00",
-      "observationpoint": "Nashville, TN",
-      "feelslike": "73",
-      "humidity": "94",
-      "winddisplay": "1 mph North",
-      "day": "Wednesday",
-      "shortday": "Wed",
-      "windspeed": "1 mph",
-      "imageUrl": "http://blob.weather.microsoft.com/static/weather4/en-us/law/29.gif"
-    },
-    "forecast": [
-      {
-        "low": "72",
-        "high": "82",
-        "skycodeday": "27",
-        "skytextday": "Mostly Cloudy",
-        "date": "2020-07-01",
-        "day": "Wednesday",
-        "shortday": "Wed",
-        "precip": "20"
-      },
-      {
-        "low": "72",
-        "high": "87",
-        "skycodeday": "30",
-        "skytextday": "Partly Sunny",
-        "date": "2020-07-02",
-        "day": "Thursday",
-        "shortday": "Thu",
-        "precip": "100"
-      },
-      {
-        "low": "72",
-        "high": "90",
-        "skycodeday": "30",
-        "skytextday": "Partly Sunny",
-        "date": "2020-07-03",
-        "day": "Friday",
-        "shortday": "Fri",
-        "precip": "0"
-      },
-      {
-        "low": "75",
-        "high": "92",
-        "skycodeday": "28",
-        "skytextday": "Mostly Cloudy",
-        "date": "2020-07-04",
-        "day": "Saturday",
-        "shortday": "Sat",
-        "precip": "10"
-      },
-      {
-        "low": "75",
-        "high": "92",
-        "skycodeday": "34",
-        "skytextday": "Mostly Sunny",
-        "date": "2020-07-05",
-        "day": "Sunday",
-        "shortday": "Sun",
-        "precip": "30"
-      }
-    ]
-  },
-  "forecast": {
-    "temperature": "73",
-    "conditions": "Partly Cloudy",
-    "low": "72°F",
-    "high": "87°F"
-  }
-}
-{
-  "results": {
-    "location": {
-      "name": "Nashville, TN",
-      "lat": "36.167",
-      "long": "-86.783",
-      "timezone": "-5",
-      "alert": "",
-      "degreetype": "F",
-      "imagerelativeurl": "http://blob.weather.microsoft.com/static/weather4/en-us/"
-    },
-    "current": {
-      "temperature": "73",
-      "skycode": "29",
-      "skytext": "Partly Cloudy",
-      "date": "2020-07-01",
-      "observationtime": "23:45:00",
-      "observationpoint": "Nashville, TN",
-      "feelslike": "73",
-      "humidity": "94",
-      "winddisplay": "1 mph North",
-      "day": "Wednesday",
-      "shortday": "Wed",
-      "windspeed": "1 mph",
-      "imageUrl": "http://blob.weather.microsoft.com/static/weather4/en-us/law/29.gif"
-    },
-    "forecast": [
-      {
-        "low": "72",
-        "high": "82",
-        "skycodeday": "27",
-        "skytextday": "Mostly Cloudy",
-        "date": "2020-07-01",
-        "day": "Wednesday",
-        "shortday": "Wed",
-        "precip": "20"
-      },
-      {
-        "low": "72",
-        "high": "87",
-        "skycodeday": "30",
-        "skytextday": "Partly Sunny",
-        "date": "2020-07-02",
-        "day": "Thursday",
-        "shortday": "Thu",
-        "precip": "100"
-      },
-      {
-        "low": "72",
-        "high": "90",
-        "skycodeday": "30",
-        "skytextday": "Partly Sunny",
-        "date": "2020-07-03",
-        "day": "Friday",
-        "shortday": "Fri",
-        "precip": "0"
-      },
-      {
-        "low": "75",
-        "high": "92",
-        "skycodeday": "28",
-        "skytextday": "Mostly Cloudy",
-        "date": "2020-07-04",
-        "day": "Saturday",
-        "shortday": "Sat",
-        "precip": "10"
-      },
-      {
-        "low": "75",
-        "high": "92",
-        "skycodeday": "34",
-        "skytextday": "Mostly Sunny",
-        "date": "2020-07-05",
-        "day": "Sunday",
-        "shortday": "Sun",
-        "precip": "30"
-      }
-    ]
-  },
-  "forecast": {
-    "temperature": "73",
-    "conditions": "Partly Cloudy",
-    "low": "72°F",
-    "high": "87°F"
-  }
-}
-{
-  "results": {
-    "location": {
-      "name": "Nashville, TN",
-      "lat": "36.167",
-      "long": "-86.783",
-      "timezone": "-5",
-      "alert": "",
-      "degreetype": "F",
-      "imagerelativeurl": "http://blob.weather.microsoft.com/static/weather4/en-us/"
-    },
-    "current": {
-      "temperature": "73",
-      "skycode": "29",
-      "skytext": "Partly Cloudy",
-      "date": "2020-07-01",
-      "observationtime": "23:45:00",
-      "observationpoint": "Nashville, TN",
-      "feelslike": "73",
-      "humidity": "94",
-      "winddisplay": "1 mph North",
-      "day": "Wednesday",
-      "shortday": "Wed",
-      "windspeed": "1 mph",
-      "imageUrl": "http://blob.weather.microsoft.com/static/weather4/en-us/law/29.gif"
-    },
-    "forecast": [
-      {
-        "low": "72",
-        "high": "82",
-        "skycodeday": "27",
-        "skytextday": "Mostly Cloudy",
-        "date": "2020-07-01",
-        "day": "Wednesday",
-        "shortday": "Wed",
-        "precip": "20"
-      },
-      {
-        "low": "72",
-        "high": "87",
-        "skycodeday": "30",
-        "skytextday": "Partly Sunny",
-        "date": "2020-07-02",
-        "day": "Thursday",
-        "shortday": "Thu",
-        "precip": "100"
-      },
-      {
-        "low": "72",
-        "high": "90",
-        "skycodeday": "30",
-        "skytextday": "Partly Sunny",
-        "date": "2020-07-03",
-        "day": "Friday",
-        "shortday": "Fri",
-        "precip": "0"
-      },
-      {
-        "low": "75",
-        "high": "92",
-        "skycodeday": "28",
-        "skytextday": "Mostly Cloudy",
-        "date": "2020-07-04",
-        "day": "Saturday",
-        "shortday": "Sat",
-        "precip": "10"
-      },
-      {
-        "low": "75",
-        "high": "92",
-        "skycodeday": "34",
-        "skytextday": "Mostly Sunny",
-        "date": "2020-07-05",
-        "day": "Sunday",
-        "shortday": "Sun",
-        "precip": "30"
-      }
-    ]
-  },
-  "forecast": {
-    "temperature": "73°F",
-    "conditions": "Partly Cloudy",
-    "low": "72°F",
-    "high": "87°F"
-  }
-}
-{
-  "results": {
-    "location": {
-      "name": "Nashville, TN",
-      "lat": "36.167",
-      "long": "-86.783",
-      "timezone": "-5",
-      "alert": "",
-      "degreetype": "F",
-      "imagerelativeurl": "http://blob.weather.microsoft.com/static/weather4/en-us/"
-    },
-    "current": {
-      "temperature": "73",
-      "skycode": "29",
-      "skytext": "Partly Cloudy",
-      "date": "2020-07-01",
-      "observationtime": "23:45:00",
-      "observationpoint": "Nashville, TN",
-      "feelslike": "73",
-      "humidity": "94",
-      "winddisplay": "1 mph North",
-      "day": "Wednesday",
-      "shortday": "Wed",
-      "windspeed": "1 mph",
-      "imageUrl": "http://blob.weather.microsoft.com/static/weather4/en-us/law/29.gif"
-    },
-    "forecast": [
-      {
-        "low": "72",
-        "high": "82",
-        "skycodeday": "27",
-        "skytextday": "Mostly Cloudy",
-        "date": "2020-07-01",
-        "day": "Wednesday",
-        "shortday": "Wed",
-        "precip": "20"
-      },
-      {
-        "low": "72",
-        "high": "87",
-        "skycodeday": "30",
-        "skytextday": "Partly Sunny",
-        "date": "2020-07-02",
-        "day": "Thursday",
-        "shortday": "Thu",
-        "precip": "100"
-      },
-      {
-        "low": "72",
-        "high": "90",
-        "skycodeday": "30",
-        "skytextday": "Partly Sunny",
-        "date": "2020-07-03",
-        "day": "Friday",
-        "shortday": "Fri",
-        "precip": "0"
-      },
-      {
-        "low": "75",
-        "high": "92",
-        "skycodeday": "28",
-        "skytextday": "Mostly Cloudy",
-        "date": "2020-07-04",
-        "day": "Saturday",
-        "shortday": "Sat",
-        "precip": "10"
-      },
-      {
-        "low": "75",
-        "high": "92",
-        "skycodeday": "34",
-        "skytextday": "Mostly Sunny",
-        "date": "2020-07-05",
-        "day": "Sunday",
-        "shortday": "Sun",
-        "precip": "30"
-      }
-    ]
-  },
-  "forecast": {
-    "temperature": "73°F",
-    "conditions": "Partly Cloudy",
-    "low": "72°F",
-    "high": "87°F"
-  }
-}
-{
-  "results": {
-    "location": {
-      "name": "Nashville, TN",
-      "lat": "36.167",
-      "long": "-86.783",
-      "timezone": "-5",
-      "alert": "",
-      "degreetype": "F",
-      "imagerelativeurl": "http://blob.weather.microsoft.com/static/weather4/en-us/"
-    },
-    "current": {
-      "temperature": "73",
-      "skycode": "29",
-      "skytext": "Partly Cloudy",
-      "date": "2020-07-01",
-      "observationtime": "23:45:00",
-      "observationpoint": "Nashville, TN",
-      "feelslike": "73",
-      "humidity": "94",
-      "winddisplay": "1 mph North",
-      "day": "Wednesday",
-      "shortday": "Wed",
-      "windspeed": "1 mph",
-      "imageUrl": "http://blob.weather.microsoft.com/static/weather4/en-us/law/29.gif"
-    },
-    "forecast": [
-      {
-        "low": "72",
-        "high": "82",
-        "skycodeday": "27",
-        "skytextday": "Mostly Cloudy",
-        "date": "2020-07-01",
-        "day": "Wednesday",
-        "shortday": "Wed",
-        "precip": "20"
-      },
-      {
-        "low": "72",
-        "high": "87",
-        "skycodeday": "30",
-        "skytextday": "Partly Sunny",
-        "date": "2020-07-02",
-        "day": "Thursday",
-        "shortday": "Thu",
-        "precip": "100"
-      },
-      {
-        "low": "72",
-        "high": "90",
-        "skycodeday": "30",
-        "skytextday": "Partly Sunny",
-        "date": "2020-07-03",
-        "day": "Friday",
-        "shortday": "Fri",
-        "precip": "0"
-      },
-      {
-        "low": "75",
-        "high": "92",
-        "skycodeday": "28",
-        "skytextday": "Mostly Cloudy",
-        "date": "2020-07-04",
-        "day": "Saturday",
-        "shortday": "Sat",
-        "precip": "10"
-      },
-      {
-        "low": "75",
-        "high": "92",
-        "skycodeday": "34",
-        "skytextday": "Mostly Sunny",
-        "date": "2020-07-05",
-        "day": "Sunday",
-        "shortday": "Sun",
-        "precip": "30"
-      }
-    ]
-  },
-  "forecast": {
-    "temperature": "73°F",
-    "conditions": "Partly Cloudy",
-    "low": "72°F",
-    "high": "87°F"
-  }
-}
-{
-  "results": {
-    "location": {
-      "name": "Nashville, TN",
-      "lat": "36.167",
-      "long": "-86.783",
-      "timezone": "-5",
-      "alert": "",
-      "degreetype": "F",
-      "imagerelativeurl": "http://blob.weather.microsoft.com/static/weather4/en-us/"
-    },
-    "current": {
-      "temperature": "72",
+      "temperature": "80",
       "skycode": "31",
-      "skytext": "Mostly Clear",
+      "skytext": "Clear",
       "date": "2020-07-02",
-      "observationtime": "00:00:00",
+      "observationtime": "23:25:00",
       "observationpoint": "Nashville, TN",
-      "feelslike": "72",
-      "humidity": "96",
-      "winddisplay": "3 mph West",
+      "feelslike": "80",
+      "humidity": "77",
+      "winddisplay": "2 mph Northeast",
       "day": "Thursday",
       "shortday": "Thu",
-      "windspeed": "3 mph",
+      "windspeed": "2 mph",
       "imageUrl": "http://blob.weather.microsoft.com/static/weather4/en-us/law/31.gif"
     },
     "forecast": [
       {
-        "low": "72",
+        "low": "69",
         "high": "82",
-        "skycodeday": "27",
-        "skytextday": "Mostly Cloudy",
+        "skycodeday": "29",
+        "skytextday": "Partly Cloudy",
         "date": "2020-07-01",
         "day": "Wednesday",
         "shortday": "Wed",
-        "precip": "20"
+        "precip": ""
       },
       {
-        "low": "72",
-        "high": "87",
-        "skycodeday": "30",
-        "skytextday": "Partly Sunny",
+        "low": "73",
+        "high": "90",
+        "skycodeday": "34",
+        "skytextday": "Mostly Sunny",
         "date": "2020-07-02",
         "day": "Thursday",
         "shortday": "Thu",
-        "precip": "100"
+        "precip": "0"
       },
       {
         "low": "72",
-        "high": "90",
-        "skycodeday": "30",
-        "skytextday": "Partly Sunny",
+        "high": "91",
+        "skycodeday": "34",
+        "skytextday": "Mostly Sunny",
         "date": "2020-07-03",
         "day": "Friday",
         "shortday": "Fri",
         "precip": "0"
       },
       {
-        "low": "75",
-        "high": "92",
-        "skycodeday": "28",
-        "skytextday": "Mostly Cloudy",
+        "low": "73",
+        "high": "91",
+        "skycodeday": "30",
+        "skytextday": "Partly Sunny",
         "date": "2020-07-04",
         "day": "Saturday",
         "shortday": "Sat",
@@ -658,20 +390,414 @@
       },
       {
         "low": "75",
-        "high": "92",
-        "skycodeday": "34",
-        "skytextday": "Mostly Sunny",
+        "high": "93",
+        "skycodeday": "32",
+        "skytextday": "Sunny",
         "date": "2020-07-05",
         "day": "Sunday",
         "shortday": "Sun",
         "precip": "30"
       }
     ]
-  },
-  "forecast": {
-    "temperature": "72°F",
-    "conditions": "Mostly Clear",
-    "low": "72°F",
-    "high": "87°F"
+  }
+}
+{
+  "results": {
+    "location": {
+      "name": "Nashville, TN",
+      "lat": "36.167",
+      "long": "-86.783",
+      "timezone": "-5",
+      "alert": "",
+      "degreetype": "F",
+      "imagerelativeurl": "http://blob.weather.microsoft.com/static/weather4/en-us/"
+    },
+    "current": {
+      "temperature": "80",
+      "skycode": "31",
+      "skytext": "Clear",
+      "date": "2020-07-02",
+      "observationtime": "23:25:00",
+      "observationpoint": "Nashville, TN",
+      "feelslike": "80",
+      "humidity": "77",
+      "winddisplay": "2 mph Northeast",
+      "day": "Thursday",
+      "shortday": "Thu",
+      "windspeed": "2 mph",
+      "imageUrl": "http://blob.weather.microsoft.com/static/weather4/en-us/law/31.gif"
+    },
+    "forecast": [
+      {
+        "low": "69",
+        "high": "82",
+        "skycodeday": "29",
+        "skytextday": "Partly Cloudy",
+        "date": "2020-07-01",
+        "day": "Wednesday",
+        "shortday": "Wed",
+        "precip": ""
+      },
+      {
+        "low": "73",
+        "high": "90",
+        "skycodeday": "34",
+        "skytextday": "Mostly Sunny",
+        "date": "2020-07-02",
+        "day": "Thursday",
+        "shortday": "Thu",
+        "precip": "0"
+      },
+      {
+        "low": "72",
+        "high": "91",
+        "skycodeday": "34",
+        "skytextday": "Mostly Sunny",
+        "date": "2020-07-03",
+        "day": "Friday",
+        "shortday": "Fri",
+        "precip": "0"
+      },
+      {
+        "low": "73",
+        "high": "91",
+        "skycodeday": "30",
+        "skytextday": "Partly Sunny",
+        "date": "2020-07-04",
+        "day": "Saturday",
+        "shortday": "Sat",
+        "precip": "10"
+      },
+      {
+        "low": "75",
+        "high": "93",
+        "skycodeday": "32",
+        "skytextday": "Sunny",
+        "date": "2020-07-05",
+        "day": "Sunday",
+        "shortday": "Sun",
+        "precip": "30"
+      }
+    ]
+  }
+}
+{
+  "results": {
+    "location": {
+      "name": "Nashville, TN",
+      "lat": "36.167",
+      "long": "-86.783",
+      "timezone": "-5",
+      "alert": "",
+      "degreetype": "F",
+      "imagerelativeurl": "http://blob.weather.microsoft.com/static/weather4/en-us/"
+    },
+    "current": {
+      "temperature": "80",
+      "skycode": "31",
+      "skytext": "Clear",
+      "date": "2020-07-02",
+      "observationtime": "23:25:00",
+      "observationpoint": "Nashville, TN",
+      "feelslike": "80",
+      "humidity": "77",
+      "winddisplay": "2 mph Northeast",
+      "day": "Thursday",
+      "shortday": "Thu",
+      "windspeed": "2 mph",
+      "imageUrl": "http://blob.weather.microsoft.com/static/weather4/en-us/law/31.gif"
+    },
+    "forecast": [
+      {
+        "low": "69",
+        "high": "82",
+        "skycodeday": "29",
+        "skytextday": "Partly Cloudy",
+        "date": "2020-07-01",
+        "day": "Wednesday",
+        "shortday": "Wed",
+        "precip": ""
+      },
+      {
+        "low": "73",
+        "high": "90",
+        "skycodeday": "34",
+        "skytextday": "Mostly Sunny",
+        "date": "2020-07-02",
+        "day": "Thursday",
+        "shortday": "Thu",
+        "precip": "0"
+      },
+      {
+        "low": "72",
+        "high": "91",
+        "skycodeday": "34",
+        "skytextday": "Mostly Sunny",
+        "date": "2020-07-03",
+        "day": "Friday",
+        "shortday": "Fri",
+        "precip": "0"
+      },
+      {
+        "low": "73",
+        "high": "91",
+        "skycodeday": "30",
+        "skytextday": "Partly Sunny",
+        "date": "2020-07-04",
+        "day": "Saturday",
+        "shortday": "Sat",
+        "precip": "10"
+      },
+      {
+        "low": "75",
+        "high": "93",
+        "skycodeday": "32",
+        "skytextday": "Sunny",
+        "date": "2020-07-05",
+        "day": "Sunday",
+        "shortday": "Sun",
+        "precip": "30"
+      }
+    ]
+  }
+}
+{
+  "results": {
+    "location": {
+      "name": "Nashville, TN",
+      "lat": "36.167",
+      "long": "-86.783",
+      "timezone": "-5",
+      "alert": "",
+      "degreetype": "F",
+      "imagerelativeurl": "http://blob.weather.microsoft.com/static/weather4/en-us/"
+    },
+    "current": {
+      "temperature": "80",
+      "skycode": "31",
+      "skytext": "Clear",
+      "date": "2020-07-02",
+      "observationtime": "23:25:00",
+      "observationpoint": "Nashville, TN",
+      "feelslike": "80",
+      "humidity": "77",
+      "winddisplay": "2 mph Northeast",
+      "day": "Thursday",
+      "shortday": "Thu",
+      "windspeed": "2 mph",
+      "imageUrl": "http://blob.weather.microsoft.com/static/weather4/en-us/law/31.gif"
+    },
+    "forecast": [
+      {
+        "low": "69",
+        "high": "82",
+        "skycodeday": "29",
+        "skytextday": "Partly Cloudy",
+        "date": "2020-07-01",
+        "day": "Wednesday",
+        "shortday": "Wed",
+        "precip": ""
+      },
+      {
+        "low": "73",
+        "high": "90",
+        "skycodeday": "34",
+        "skytextday": "Mostly Sunny",
+        "date": "2020-07-02",
+        "day": "Thursday",
+        "shortday": "Thu",
+        "precip": "0"
+      },
+      {
+        "low": "72",
+        "high": "91",
+        "skycodeday": "34",
+        "skytextday": "Mostly Sunny",
+        "date": "2020-07-03",
+        "day": "Friday",
+        "shortday": "Fri",
+        "precip": "0"
+      },
+      {
+        "low": "73",
+        "high": "91",
+        "skycodeday": "30",
+        "skytextday": "Partly Sunny",
+        "date": "2020-07-04",
+        "day": "Saturday",
+        "shortday": "Sat",
+        "precip": "10"
+      },
+      {
+        "low": "75",
+        "high": "93",
+        "skycodeday": "32",
+        "skytextday": "Sunny",
+        "date": "2020-07-05",
+        "day": "Sunday",
+        "shortday": "Sun",
+        "precip": "30"
+      }
+    ]
+  }
+}
+{
+  "results": {
+    "location": {
+      "name": "Nashville, TN",
+      "lat": "36.167",
+      "long": "-86.783",
+      "timezone": "-5",
+      "alert": "",
+      "degreetype": "F",
+      "imagerelativeurl": "http://blob.weather.microsoft.com/static/weather4/en-us/"
+    },
+    "current": {
+      "temperature": "80",
+      "skycode": "31",
+      "skytext": "Clear",
+      "date": "2020-07-02",
+      "observationtime": "23:25:00",
+      "observationpoint": "Nashville, TN",
+      "feelslike": "80",
+      "humidity": "77",
+      "winddisplay": "2 mph Northeast",
+      "day": "Thursday",
+      "shortday": "Thu",
+      "windspeed": "2 mph",
+      "imageUrl": "http://blob.weather.microsoft.com/static/weather4/en-us/law/31.gif"
+    },
+    "forecast": [
+      {
+        "low": "69",
+        "high": "82",
+        "skycodeday": "29",
+        "skytextday": "Partly Cloudy",
+        "date": "2020-07-01",
+        "day": "Wednesday",
+        "shortday": "Wed",
+        "precip": ""
+      },
+      {
+        "low": "73",
+        "high": "90",
+        "skycodeday": "34",
+        "skytextday": "Mostly Sunny",
+        "date": "2020-07-02",
+        "day": "Thursday",
+        "shortday": "Thu",
+        "precip": "0"
+      },
+      {
+        "low": "72",
+        "high": "91",
+        "skycodeday": "34",
+        "skytextday": "Mostly Sunny",
+        "date": "2020-07-03",
+        "day": "Friday",
+        "shortday": "Fri",
+        "precip": "0"
+      },
+      {
+        "low": "73",
+        "high": "91",
+        "skycodeday": "30",
+        "skytextday": "Partly Sunny",
+        "date": "2020-07-04",
+        "day": "Saturday",
+        "shortday": "Sat",
+        "precip": "10"
+      },
+      {
+        "low": "75",
+        "high": "93",
+        "skycodeday": "32",
+        "skytextday": "Sunny",
+        "date": "2020-07-05",
+        "day": "Sunday",
+        "shortday": "Sun",
+        "precip": "30"
+      }
+    ]
+  }
+}
+{
+  "results": {
+    "location": {
+      "name": "Nashville, TN",
+      "lat": "36.167",
+      "long": "-86.783",
+      "timezone": "-5",
+      "alert": "",
+      "degreetype": "F",
+      "imagerelativeurl": "http://blob.weather.microsoft.com/static/weather4/en-us/"
+    },
+    "current": {
+      "temperature": "80",
+      "skycode": "31",
+      "skytext": "Clear",
+      "date": "2020-07-02",
+      "observationtime": "23:25:00",
+      "observationpoint": "Nashville, TN",
+      "feelslike": "80",
+      "humidity": "77",
+      "winddisplay": "2 mph Northeast",
+      "day": "Thursday",
+      "shortday": "Thu",
+      "windspeed": "2 mph",
+      "imageUrl": "http://blob.weather.microsoft.com/static/weather4/en-us/law/31.gif"
+    },
+    "forecast": [
+      {
+        "low": "69",
+        "high": "82",
+        "skycodeday": "29",
+        "skytextday": "Partly Cloudy",
+        "date": "2020-07-01",
+        "day": "Wednesday",
+        "shortday": "Wed",
+        "precip": ""
+      },
+      {
+        "low": "73",
+        "high": "90",
+        "skycodeday": "34",
+        "skytextday": "Mostly Sunny",
+        "date": "2020-07-02",
+        "day": "Thursday",
+        "shortday": "Thu",
+        "precip": "0"
+      },
+      {
+        "low": "72",
+        "high": "91",
+        "skycodeday": "34",
+        "skytextday": "Mostly Sunny",
+        "date": "2020-07-03",
+        "day": "Friday",
+        "shortday": "Fri",
+        "precip": "0"
+      },
+      {
+        "low": "73",
+        "high": "91",
+        "skycodeday": "30",
+        "skytextday": "Partly Sunny",
+        "date": "2020-07-04",
+        "day": "Saturday",
+        "shortday": "Sat",
+        "precip": "10"
+      },
+      {
+        "low": "75",
+        "high": "93",
+        "skycodeday": "32",
+        "skytextday": "Sunny",
+        "date": "2020-07-05",
+        "day": "Sunday",
+        "shortday": "Sun",
+        "precip": "30"
+      }
+    ]
   }
 }

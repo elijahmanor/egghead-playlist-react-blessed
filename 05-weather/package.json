@@ -28,6 +28,7 @@
     "figlet": "^1.4.0",
     "react": "^16.13.1",
     "react-blessed": "^0.6.2",
+    "react-query": "^2.4.12",
     "weather-js": "^2.0.0"
   }
 }
