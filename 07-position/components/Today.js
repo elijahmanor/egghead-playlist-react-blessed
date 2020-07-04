@@ -24,6 +24,22 @@ const FONTS = [
   'Small Shadow'
 ]
 
+const centerFiglet = (text, width) => {
+  const lines = text.split('\n')
+  const longestLine = lines.reduce((memo, line) => {
+    memo = line.length > memo ? line.length : memo
+    return memo
+  }, 0)
+  const surroundingPadding = width - longestLine
+  const leftPadding = Math.floor(surroundingPadding / 2)
+  const centered =
+    leftPadding >= 0
+      ? lines.map(line => `${' '.repeat(leftPadding)}${line}`).join('\n')
+      : text.replace(/[\n\s]+$/, '')
+  console.log({ width, longestLine, surroundingPadding, leftPadding })
+  return centered
+}
+
 const findWeather = util.promisify(weather.find)
 
 const random = (min, max) => {
@@ -61,25 +77,26 @@ export default function Today({
   search = 'Nashville, TN',
   degreeType = 'F'
 }) {
+  const boxRef = React.useRef()
   const [now, setNow] = React.useState(new Date())
   const [fontIndex, setFontIndex] = React.useState(0)
+  const [width, setWidth] = React.useState(100)
 
   useInterval(() => {
     setNow(new Date())
   }, 60000) // 1 min
 
-  const time = gradient.atlas(
-    figlet.textSync(
-      now.toLocaleString('en-US', {
-        hour: '2-digit',
-        minute: '2-digit',
-        hour12: true
-      }),
-      {
-        font: FONTS[fontIndex % FONTS.length]
-      }
-    )
+  const time = figlet.textSync(
+    now.toLocaleString('en-US', {
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: true
+    }),
+    {
+      font: FONTS[fontIndex % FONTS.length]
+    }
   )
+
   const date = chalk.blue(
     now.toLocaleString('en-US', {
       month: 'long',
@@ -94,8 +111,13 @@ export default function Today({
     { refetchInterval: 5000 } //updateInterval }
   )
 
+  React.useEffect(() => {
+    setWidth(boxRef.current.width)
+  }, [now])
+
   return (
     <box
+      ref={boxRef}
       top="center"
       left="center"
       width="65%"
@@ -105,13 +127,20 @@ export default function Today({
         border: { fg: 'blue' }
       }}
     >
-      {`${date}
-
-${time}
-
-${
-  status === 'loading' ? 'Loading...' : error ? 'Error!' : formatWeather(data)
-}`}
+      <text top={0} right={0}>
+        {date}
+      </text>
+      <text top="center">{gradient.atlas(centerFiglet(time, width))}</text>
+      {/* <text top="center" left="center">
+        {gradient.atlas(time)}
+      </text> */}
+      <text top="100%-3" left={0}>
+        {status === 'loading'
+          ? 'Loading...'
+          : error
+          ? 'Error!'
+          : formatWeather(data)}
+      </text>
     </box>
   )
 }
