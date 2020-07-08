@@ -4,7 +4,6 @@ import weather from 'weather-js'
 import util from 'util'
 import fs from 'fs'
 import path from 'path'
-import useInterval from '@use-it/interval'
 import { useQuery } from 'react-query'
 
 const FONTS = [
@@ -64,6 +63,17 @@ export default function Today({
     setNow(new Date())
   }, 60000) // 1 min
 
+  const { status, data, error } = useQuery(
+    ['weather', { search, degreeType }],
+    fetchWeather,
+    { refetchInterval: 5000 } //updateInterval }
+  )
+
+  const date = now.toLocaleString('en-US', {
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric'
+  })
   const time = figlet.textSync(
     now.toLocaleString('en-US', {
       hour: '2-digit',
@@ -73,17 +83,6 @@ export default function Today({
     {
       font: FONTS[fontIndex % FONTS.length]
     }
-  )
-  const date = now.toLocaleString('en-US', {
-    month: 'long',
-    day: 'numeric',
-    year: 'numeric'
-  })
-
-  const { status, data, error } = useQuery(
-    ['weather', { search, degreeType }],
-    fetchWeather,
-    { refetchInterval: 5000 } //updateInterval }
   )
 
   return (
