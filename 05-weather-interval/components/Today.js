@@ -1,9 +1,7 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import figlet from 'figlet'
 import weather from 'weather-js'
 import util from 'util'
-import fs from 'fs'
-import path from 'path'
 import useInterval from '@use-it/interval'
 
 const FONTS = [
@@ -30,6 +28,15 @@ const random = (min, max) => {
 }
 
 const fetchWeather = (key, options) => {
+  return new Promise(resolve => setTimeout(() => {
+    resolve([
+      {
+        location: { degreetype: 'F' },
+        current: { temperature: random(50, 100), skytext: 'Normal' },
+        forecast: [{}, { low: random(0, 50), high: random(50, 100) }]
+      }
+    ])
+  }, 1000));
   return Promise.resolve([
     {
       location: { degreetype: 'F' },
@@ -51,27 +58,43 @@ const formatWeather = ([results]) => {
   return `${temperature} and ${conditions} (${low} → ${high})`
 }
 
+const useRequest = (promise, interval) => {
+  const [state, setState] = React.useState({ status: null, error: null, data: null });
+  React.useEffect(() => { })
+  return state;
+}
+
 export default function Today({
   updateInterval = 900000, // 15 mins
   search = 'Nashville, TN',
   degreeType = 'F'
 }) {
   const [now, setNow] = React.useState(new Date())
+  const [weather, setWeather] = React.useState({
+    status: "loading",
+    error: null,
+    data: null
+  });
   const [fontIndex, setFontIndex] = React.useState(0)
+
+  const fetchData = async () => {
+    setWeather({ status: "loading", error: null, data: null });
+    const data = await fetchWeather({ search, degreeType });
+    // const data = await findWeather({ search, degreeType });
+    setWeather({ status: "complete", error: null, data });
+  };
 
   useInterval(() => {
     setNow(new Date())
   }, 60000) // 1 min
 
-  useInterval(() => {
-    setNow(new Date())
-  }, 5000) // updateInterval
+  useEffect(() => {
+    fetchData();
+  }, []);
 
-  // const { status, data, error } = useQuery(
-  //   ['weather', { search, degreeType }],
-  //   fetchWeather,
-  //   { refetchInterval: 5000 } //updateInterval }
-  // )
+  useInterval(() => {
+    fetchData();
+  }, 12000) // updateInterval
 
   const date = now.toLocaleString('en-US', {
     month: 'long',
@@ -105,8 +128,8 @@ export default function Today({
 ${time}
 
 ${
-  status === 'loading' ? 'Loading...' : error ? 'Error!' : formatWeather(data)
-}`}
+        weather.status === 'loading' ? 'Loading...' : weather.error ? 'Error!' : formatWeather(weather.data)
+        }`}
     </box>
   )
 }
