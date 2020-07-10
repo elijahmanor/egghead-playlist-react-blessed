@@ -11,7 +11,11 @@ import Today from './components/Today'
 const queryCache = makeQueryCache({ frozen: false })
 
 const App = () => {
-  return <Today updateInterval={900000} />
+  const [degreeType, setDegreeType] = React.useState('F')
+  React.useEffect(() => {
+    screen.key(['d'], () => setDegreeType(degreeType === 'F' ? 'C' : 'F'))
+  }, [])
+  return <Today updateInterval={900000} degreeType={degreeType} />
 }
 
 const screen = blessed.screen({

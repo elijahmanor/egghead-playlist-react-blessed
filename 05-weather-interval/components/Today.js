@@ -28,15 +28,17 @@ const random = (min, max) => {
 }
 
 const fetchWeather = (key, options) => {
-  return new Promise(resolve => setTimeout(() => {
-    resolve([
-      {
-        location: { degreetype: 'F' },
-        current: { temperature: random(50, 100), skytext: 'Normal' },
-        forecast: [{}, { low: random(0, 50), high: random(50, 100) }]
-      }
-    ])
-  }, 1000));
+  return new Promise(resolve =>
+    setTimeout(() => {
+      resolve([
+        {
+          location: { degreetype: 'F' },
+          current: { temperature: random(50, 100), skytext: 'Normal' },
+          forecast: [{}, { low: random(0, 50), high: random(50, 100) }]
+        }
+      ])
+    }, 1000)
+  )
   return Promise.resolve([
     {
       location: { degreetype: 'F' },
@@ -58,10 +60,29 @@ const formatWeather = ([results]) => {
   return `${temperature} and ${conditions} (${low} → ${high})`
 }
 
-const useRequest = (promise, interval) => {
-  const [state, setState] = React.useState({ status: null, error: null, data: null });
-  React.useEffect(() => { })
-  return state;
+const useRequest = (promise, options, interval = null) => {
+  const [state, setState] = React.useState({
+    status: 'loading',
+    error: null,
+    data: null
+  })
+  const request = async options => {
+    let data
+    try {
+      setState({ status: 'loading', error: null, data: null })
+      data = await promise(options)
+      setState({ status: 'complete', error: null, data })
+    } catch (exception) {
+      setState({ status: 'error', error: exception, data: null })
+    }
+  }
+  React.useEffect(() => {
+    request(options)
+  }, [])
+  useInterval(() => {
+    request(options)
+  }, interval)
+  return state
 }
 
 export default function Today({
@@ -70,24 +91,34 @@ export default function Today({
   degreeType = 'F'
 }) {
   const [now, setNow] = React.useState(new Date())
-  const [weather, setWeather] = React.useState({
-    status: "loading",
-    error: null,
-    data: null
-  });
+  console.log({ degreeType })
+  // const [weather, setWeather] = React.useState({
+  //   status: 'loading',
+  //   error: null,
+  //   data: null
+  // })
   const [fontIndex, setFontIndex] = React.useState(0)
 
+  const { status, error, data } = useRequest(
+    fetchWeather,
+    { search, degreeType },
+    12000
+  )
+
+  /*
   const fetchData = async () => {
     setWeather({ status: "loading", error: null, data: null });
     const data = await fetchWeather({ search, degreeType });
     // const data = await findWeather({ search, degreeType });
     setWeather({ status: "complete", error: null, data });
   };
+  */
 
   useInterval(() => {
     setNow(new Date())
   }, 60000) // 1 min
 
+  /*
   useEffect(() => {
     fetchData();
   }, []);
@@ -95,6 +126,7 @@ export default function Today({
   useInterval(() => {
     fetchData();
   }, 12000) // updateInterval
+  */
 
   const date = now.toLocaleString('en-US', {
     month: 'long',
@@ -128,8 +160,8 @@ export default function Today({
 ${time}
 
 ${
-        weather.status === 'loading' ? 'Loading...' : weather.error ? 'Error!' : formatWeather(weather.data)
-        }`}
+  status === 'loading' ? 'Loading...' : error ? 'Error!' : formatWeather(data)
+}`}
     </box>
   )
 }
