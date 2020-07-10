@@ -3,6 +3,7 @@ import figlet from 'figlet'
 import weather from 'weather-js'
 import util from 'util'
 import useInterval from '@use-it/interval'
+import { isEqual } from "lodash"
 
 const FONTS = [
   'Straight',
@@ -60,37 +61,80 @@ const formatWeather = ([results]) => {
   return `${temperature} and ${conditions} (${low} → ${high})`
 }
 
+const useRequest = (promise, options, interval = null) => {
+  const [state, setState] = React.useState({
+    status: 'loading',
+    error: null,
+    data: null
+  })
+  const prevOptions = React.useRef(null)
+
+  const request = async options => {
+    let data
+    try {
+      setState({ status: 'loading', error: null, data: null })
+      data = await promise(options)
+      setState({ status: 'complete', error: null, data })
+    } catch (exception) {
+      setState({ status: 'error', error: exception, data: null })
+    }
+  }
+  React.useEffect(() => {
+    if (!isEqual(prevOptions.current, options)) {
+      request(options)
+    }
+  })
+  useInterval(() => {
+    request(options)
+  }, interval)
+  React.useEffect(() => {
+    prevOptions.current = options;
+  })
+
+  return state
+}
+
 export default function Today({
   updateInterval = 900000, // 15 mins
   search = 'Nashville, TN',
   degreeType = 'F'
 }) {
   const [now, setNow] = React.useState(new Date())
-  const [weather, setWeather] = React.useState({
-    status: 'loading',
-    error: null,
-    data: null
-  })
+  // const [weather, setWeather] = React.useState({
+  //   status: 'loading',
+  //   error: null,
+  //   data: null
+  // })
   const [fontIndex, setFontIndex] = React.useState(0)
 
+  const { status, error, data } = useRequest(
+    fetchWeather,
+    { search, degreeType },
+    12000
+  )
+
+  /*
   const fetchData = async () => {
     setWeather({ status: "loading", error: null, data: null });
     const data = await fetchWeather({ search, degreeType });
     // const data = await findWeather({ search, degreeType });
     setWeather({ status: "complete", error: null, data });
   };
+  */
 
   useInterval(() => {
     setNow(new Date())
   }, 60000) // 1 min
 
-  React.useEffect(() => {
+  /*
+  useEffect(() => {
     fetchData();
-  }, [degreeType]);
+  }, []);
 
   useInterval(() => {
     fetchData();
   }, 12000) // updateInterval
+  */
 
   const date = now.toLocaleString('en-US', {
     month: 'long',
@@ -124,7 +168,7 @@ export default function Today({
 ${time}
 
 ${
-        weather.status === 'loading' ? 'Loading...' : weather.error ? 'Error!' : formatWeather(weather.data)
+        status === 'loading' ? 'Loading...' : error ? 'Error!' : formatWeather(data)
         }`}
     </box>
   )
