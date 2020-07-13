@@ -3,7 +3,10 @@ import figlet from 'figlet'
 import weather from 'weather-js'
 import util from 'util'
 import useInterval from '@use-it/interval'
-import { isEqual } from "lodash"
+import { isEqual } from 'lodash'
+import chalk from 'chalk'
+import gradient from 'gradient-string'
+import useRequest from '../hooks/useRequest'
 
 const FONTS = [
   'Straight',
@@ -28,7 +31,7 @@ const random = (min, max) => {
   return Math.floor(Math.random() * (max - min)) + min
 }
 
-const fetchWeather = (options) => {
+const fetchWeather = options => {
   return new Promise(resolve =>
     setTimeout(() => {
       resolve([
@@ -58,125 +61,72 @@ const formatWeather = ([results]) => {
   const low = `${forecast[1].low}°${degreeType}`
   const high = `${forecast[1].high}°${degreeType}`
 
-  return `${temperature} and ${conditions} (${low} → ${high})`
-}
-
-const useRequest = (promise, options, interval = null) => {
-  const [state, setState] = React.useState({
-    status: 'loading',
-    error: null,
-    data: null
-  })
-  const prevOptions = React.useRef(null)
-
-  const request = async options => {
-    let data
-    try {
-      setState({ status: 'loading', error: null, data: null })
-      data = await promise(options)
-      setState({ status: 'complete', error: null, data })
-    } catch (exception) {
-      setState({ status: 'error', error: exception, data: null })
-    }
-  }
-  React.useEffect(() => {
-    if (!isEqual(prevOptions.current, options)) {
-      request(options)
-    }
-  })
-  useInterval(() => {
-    request(options)
-  }, interval)
-  React.useEffect(() => {
-    prevOptions.current = options;
-  })
-
-  return state
+  return `${chalk.yellow(temperature)} and ${chalk.green(
+    conditions
+  )} (${chalk.blue(low)} → ${chalk.red(high)})`
 }
 
 export default function Today({
   updateInterval = 900000, // 15 mins
   search = 'Nashville, TN',
   degreeType = 'F',
-  top,
-  left,
-  width,
-  height
+  ...rest
 }) {
-  const layout = {
-    top,
-    left,
-    width,
-    height
-  }
   const [now, setNow] = React.useState(new Date())
-  // const [weather, setWeather] = React.useState({
-  //   status: 'loading',
-  //   error: null,
-  //   data: null
-  // })
   const [fontIndex, setFontIndex] = React.useState(0)
 
   const { status, error, data } = useRequest(
     fetchWeather,
     { search, degreeType },
-    12000
+    updateInterval
   )
-
-  /*
-  const fetchData = async () => {
-    setWeather({ status: "loading", error: null, data: null });
-    const data = await fetchWeather({ search, degreeType });
-    // const data = await findWeather({ search, degreeType });
-    setWeather({ status: "complete", error: null, data });
-  };
-  */
 
   useInterval(() => {
     setNow(new Date())
-  }, 60000) // 1 min
+  }, 60000)
 
-  /*
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  useInterval(() => {
-    fetchData();
-  }, 12000) // updateInterval
-  */
-
-  const date = now.toLocaleString('en-US', {
-    month: 'long',
-    day: 'numeric',
-    year: 'numeric'
-  })
-  const time = figlet.textSync(
+  const date = chalk.blue(
     now.toLocaleString('en-US', {
-      hour: '2-digit',
-      minute: '2-digit',
-      hour12: true
-    }),
-    {
-      font: FONTS[fontIndex % FONTS.length]
-    }
+      month: 'long',
+      day: 'numeric',
+      year: 'numeric'
+    })
+  )
+  const time = gradient.atlas(
+    figlet.textSync(
+      now.toLocaleString('en-US', {
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: true
+      }),
+      {
+        font: FONTS[fontIndex % FONTS.length]
+      }
+    )
   )
 
   return (
     <box
-      {...layout}
+      label="🌤  Today"
       border={{ type: 'line' }}
       style={{
         border: { fg: 'blue' }
       }}
+      {...rest}
     >
-      {`${date}
-
-${time}
-
-${
-        status === 'loading' ? 'Loading...' : error ? 'Error!' : formatWeather(data)
-        }`}
+      <text top={0} right={1}>
+        {date}
+      </text>
+      <text top="center" left="center">
+        {time}
+      </text>
+      <text top="100%-3" left={1}>
+        {status === 'loading'
+          ? 'Loading...'
+          : error
+          ? 'Error!'
+          : formatWeather(data)}
+      </text>{' '}
     </box>
   )
 }
