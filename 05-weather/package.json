@@ -20,6 +20,7 @@
   "homepage": "https://github.com/elijahmanor/egghead-playlist-react-blessed#readme",
   "dependencies": {
     "@babel/core": "^7.10.3",
+    "@babel/plugin-transform-runtime": "^7.10.5",
     "@babel/preset-env": "^7.10.3",
     "@babel/preset-react": "^7.10.1",
     "@babel/register": "^7.10.3",
@@ -30,6 +31,7 @@
     "eslint-plugin-react-hooks": "^4.0.5",
     "figlet": "^1.4.0",
     "react": "^16.13.1",
-    "react-blessed": "^0.6.2"
+    "react-blessed": "^0.6.2",
+    "weather-js": "^2.0.0"
   }
 }
