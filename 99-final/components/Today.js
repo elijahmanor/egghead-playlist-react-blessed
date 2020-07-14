@@ -32,25 +32,25 @@ const random = (min, max) => {
 }
 
 const fetchWeather = options => {
-  return new Promise(resolve =>
-    setTimeout(() => {
-      resolve([
-        {
-          location: { degreetype: options.degreeType },
-          current: { temperature: random(50, 100), skytext: 'Normal' },
-          forecast: [{}, { low: random(0, 50), high: random(50, 100) }]
-        }
-      ])
-    }, 1000)
-  )
-  return Promise.resolve([
-    {
-      location: { degreetype: 'F' },
-      current: { temperature: random(50, 100), skytext: 'Normal' },
-      forecast: [{}, { low: random(0, 50), high: random(50, 100) }]
-    }
-  ])
-  // return findWeather(options)
+  // return new Promise(resolve =>
+  //   setTimeout(() => {
+  //     resolve([
+  //       {
+  //         location: { degreetype: options.degreeType },
+  //         current: { temperature: random(50, 100), skytext: 'Normal' },
+  //         forecast: [{}, { low: random(0, 50), high: random(50, 100) }]
+  //       }
+  //     ])
+  //   }, 1000)
+  // )
+  // return Promise.resolve([
+  //   {
+  //     location: { degreetype: 'F' },
+  //     current: { temperature: random(50, 100), skytext: 'Normal' },
+  //     forecast: [{}, { low: random(0, 50), high: random(50, 100) }]
+  //   }
+  // ])
+  return findWeather(options)
 }
 
 const formatWeather = ([results]) => {

@@ -5,6 +5,14 @@ import { cd, exec } from 'shelljs'
 import chalk from 'chalk'
 import useRequest from '../hooks/useRequest'
 
+const leftPad = (text, number = 1) =>
+  text
+    ? text
+        .split('\n')
+        .map(l => `${' '.repeat(number)}${l}`)
+        .join('\n')
+    : ''
+
 const truncate = (value, length) => {
   if (value.length > length) {
     return `${value.substring(0, length - 3)}…`
@@ -20,18 +28,20 @@ const formatProjects = (projects, width) => {
         .map(commit => {
           const [, hash, message, date] =
             /^([\w\d]{4,8}) - (.*) \((.*)\)$/.exec(commit) || []
+          let condensedDate = date.replace('minutes', 'mins')
+          condensedDate = condensedDate.replace('hours', 'hrs')
           return `${chalk.red(hash)} - ${chalk.cyan(
             truncate(message, width)
-          )} (${chalk.gray(date)})`
+          )} (${chalk.gray(condensedDate)})`
         })
         .reduce((memo, commit) => {
           memo += `${commit}\n`
           return memo
         }, '')
-      memo += `${commits}\n\n`
+      memo += `${commits}\n`
     }
     return memo
-  }, '')
+  }, '\n')
 }
 
 const fetchProjects = ({ repos, author, since }) => {
@@ -66,9 +76,11 @@ export default function RecentCommits({
   left,
   width,
   height,
-  repos = ['~/github/egghead-playlist-react-blessed']
+  repos = [
+    '~/github/egghead-playlist-react-blessed',
+    '~/github/elijahmanor.com'
+  ]
 }) {
-  const boxRef = React.useRef(null)
   const layout = {
     top,
     left,
@@ -92,19 +104,13 @@ export default function RecentCommits({
       mouse={true}
       border={{ type: 'line' }}
       style={{ border: { fg: 'blue' } }}
-      ref={boxRef}
-      padding={{
-        top: 1,
-        left: 1,
-        right: 1
-      }}
     >
       {`${
         status === 'loading'
           ? 'Loading...'
           : error
           ? `Error!: ${error}`
-          : formatProjects(data, Math.floor(screen.width / 2 - 25))
+          : leftPad(formatProjects(data, Math.floor(screen.width / 2 - 28)), 1)
       }`}
     </box>
   )

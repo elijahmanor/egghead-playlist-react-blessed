@@ -116,7 +116,11 @@ function reducer(state, action) {
       }
       return { ...state, status, percent, info, instructions }
     case 'exit':
-      return { ...state, type: 'stopped' }
+      return { ...state, type: 'stopped', percent: 100 }
+    case 'updateWorkInterval':
+      return { ...state, workInterval: action.payload }
+    case 'updateBreakInterval':
+      return { ...state, breakInterval: action.payload }
     default:
       throw new Error()
   }
@@ -128,6 +132,13 @@ const usePomodoro = ({ workInterval, breakInterval, updateInterval }) => {
     { ...initialState, workInterval, breakInterval },
     init
   )
+
+  if (workInterval !== state.workInterval) {
+    dispatch({ type: 'updateWorkInterval', payload: workInterval })
+  }
+  if (breakInterval !== state.breakInterval) {
+    dispatch({ type: 'updateBreakInterval', payload: breakInterval })
+  }
 
   return { state, dispatch }
 }
