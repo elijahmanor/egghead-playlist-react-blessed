@@ -2,9 +2,7 @@ import React from 'react'
 import { Octokit } from '@octokit/rest'
 import chalk from 'chalk'
 import useRequest from '../hooks/useRequest'
-const Color = require('color')
-
-const token = 'e4342e1121d806051f1068406fe528a8b54b23bc'
+import Color from 'color'
 
 const truncate = (value, length) => {
   if (value.length > length) {
@@ -12,10 +10,6 @@ const truncate = (value, length) => {
   }
   return value
 }
-
-const octokit = new Octokit({
-  auth: token
-})
 
 const formatPulls = (pulls, width) => {
   let prs = pulls.map(p => {
@@ -43,7 +37,8 @@ ${chalk.gray('╚═══'.padEnd('6'))}${chalk.gray('by')} ${chalk.magenta(
   return prs
 }
 
-const fetchPulls = async ({ author, since }) => {
+const fetchPulls = async ({ token }) => {
+  const octokit = new Octokit({ auth: token })
   const { data } = await octokit.pulls.list({
     owner: 'elijahmanor',
     repo: 'egghead-playlist-react-blessed',
@@ -51,17 +46,17 @@ const fetchPulls = async ({ author, since }) => {
     sort: 'created',
     direction: 'desc'
   })
-  //   console.log(data[0])
   return data
 }
 
-export default function Docker({
+export default function GitHub({
   screen,
   top,
   left,
   width,
   height,
-  updateFrequency
+  updateInterval,
+  token
 }) {
   const layout = {
     top,
@@ -70,7 +65,7 @@ export default function Docker({
     height
   }
 
-  const { status, error, data } = useRequest(fetchPulls, {}, 900000) // 15 mins
+  const { status, error, data } = useRequest(fetchPulls, { token }, updateInterval)
 
   return (
     <box
@@ -90,9 +85,9 @@ export default function Docker({
         status === 'loading'
           ? 'Loading...'
           : error
-          ? 'Error!'
-          : formatPulls(data, Math.floor(screen.width / 2))
-      }`}
+            ? 'Error!'
+            : formatPulls(data, Math.floor(screen.width / 2))
+        }`}
     </box>
   )
 }

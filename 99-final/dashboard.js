@@ -69,15 +69,15 @@ const App = () => {
             updateInterval={toMilliseconds({ minutes: 5 })}
           />
         ) : (
-          <Docker
-            screen={screen}
-            row={0}
-            col={6}
-            rowSpan={6}
-            colSpan={6}
-            updateInterval={toMilliseconds({ seconds: 5 })}
-          />
-        )}
+            <Docker
+              screen={screen}
+              row={0}
+              col={6}
+              rowSpan={6}
+              colSpan={6}
+              updateInterval={toMilliseconds({ seconds: 5 })}
+            />
+          )}
         {tabIndex === 0 ? (
           <GitHub
             screen={screen}
@@ -86,17 +86,18 @@ const App = () => {
             rowSpan={6}
             colSpan={6}
             updateInterval={toMilliseconds({ minutes: 15 })}
+            token={process.env.GITHUB_TOKEN}
           />
         ) : (
-          <Usage
-            screen={screen}
-            row={6}
-            col={6}
-            rowSpan={6}
-            colSpan={6}
-            updateInterval={toMilliseconds({ seconds: 1 })}
-          />
-        )}
+            <Usage
+              screen={screen}
+              row={6}
+              col={6}
+              rowSpan={6}
+              colSpan={6}
+              updateInterval={toMilliseconds({ seconds: 1 })}
+            />
+          )}
         <box row={11} rowSpan={1} col={0} colSpan={6}>
           <button
             mouse
