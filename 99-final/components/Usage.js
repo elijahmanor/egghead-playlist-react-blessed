@@ -2,8 +2,10 @@ import React from 'react'
 import { Donut } from 'react-blessed-contrib'
 import osu from 'node-os-utils'
 import useRequest from '../hooks/useRequest'
+import terminalImage from 'terminal-image';
 
-const fetchServer = options => {
+const fetchServer = async options => {
+  return await terminalImage.file('super-mario.jpg'); //, {width: 20, height: 20, preserveAspectRatio: false})
   return new Promise(async resolve => {
     const cpuUsage = await osu.cpu.usage()
     const memUsed = await osu.mem.used()
@@ -32,9 +34,11 @@ export default function Usage({
     width,
     height
   }
-  const { status, error, data } = useRequest(fetchServer, {}, updateInterval)
+  const { status, error, data } = useRequest(fetchServer, {}, 60000)
 
   const donutRef = React.useRef()
+
+  console.log( data )
 
   return (
     <box
@@ -46,8 +50,8 @@ export default function Usage({
       }}
       scrollable={true}
     >
-      {`Hi`}
-      <Donut
+      {data}
+      {/* <Donut
         ref={donutRef}
         data={data}
         remainColor="white"
@@ -56,7 +60,7 @@ export default function Usage({
         yPadding={4}
         height="100%"
         width="100%"
-      />
+      /> */}
     </box>
   )
 }
