@@ -4,6 +4,8 @@ import useInterval from '@use-it/interval'
 import weather from 'weather-js'
 import util from 'util'
 import useDeepCompareEffect from 'use-deep-compare-effect'
+import chalk from 'chalk'
+import gradient from 'gradient-string'
 
 const findWeather = util.promisify(weather.find)
 
@@ -62,7 +64,9 @@ const formatWeather = ([results]) => {
   const low = `${forecast[1].low}°${degreeType}`
   const high = `${forecast[1].high}°${degreeType}`
 
-  return `${temperature} and ${conditions} (${low} → ${high})`
+  return `${chalk.yellow(temperature)} and ${chalk.green(
+    conditions
+  )} (${chalk.blue(low)} → ${chalk.red(high)})`
 }
 
 export default function Today({
@@ -109,9 +113,9 @@ export default function Today({
         border: { fg: 'blue' }
       }}
     >
-      {`${date}
+      {`${chalk.blue(date)}
 
-${time}
+${gradient.atlas.multiline(time)}
 
 ${
   weather.status === 'loading'
