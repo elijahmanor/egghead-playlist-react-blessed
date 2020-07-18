@@ -113,17 +113,17 @@ export default function Today({
         border: { fg: 'blue' }
       }}
     >
-      {`${chalk.blue(date)}
-
-${gradient.atlas.multiline(time)}
-
-${
-  weather.status === 'loading'
-    ? 'Loading...'
-    : weather.error
-    ? `Error: ${weather.error}`
-    : formatWeather(weather.data)
-}`}
+      <text right={1}>{chalk.blue(date)}</text>
+      <text top="center" left="center">
+        {gradient.atlas.multiline(time)}
+      </text>
+      <text top="100%-3" left={1}>
+        {weather.status === 'loading'
+          ? 'Loading...'
+          : weather.error
+          ? `Error: ${weather.error}`
+          : formatWeather(weather.data)}
+      </text>
     </box>
   )
 }
