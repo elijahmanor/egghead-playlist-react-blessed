@@ -4,6 +4,7 @@ import useInterval from '@use-it/interval'
 import weather from 'weather-js'
 import util from 'util'
 import { random } from 'lodash'
+import useDeepCompareEffect from 'use-deep-compare-effect'
 
 const findWeather = options => {
   return new Promise(resolve =>
@@ -35,6 +36,38 @@ const FONTS = [
   'Small Shadow'
 ]
 
+const useRequest = (promise, options, interval = null) => {
+  const [state, setState] = React.useState({
+    status: 'loading',
+    error: null,
+    data: null
+  })
+
+  const request = React.useCallback(
+    async options => {
+      setState({ status: 'loading', error: null, data: null })
+      let data
+      try {
+        data = await promise(options)
+        setState({ status: 'complete', error: null, data })
+      } catch (error) {
+        setState({ status: 'error', error, data: null })
+      }
+    },
+    [promise]
+  )
+
+  useDeepCompareEffect(() => {
+    request(options)
+  }, [options, request])
+
+  useInterval(() => {
+    request(options)
+  }, interval)
+
+  return state
+}
+
 const formatWeather = ([results]) => {
   const { location, current, forecast } = results
   const degreeType = location.degreetype
@@ -53,30 +86,11 @@ export default function Today({
 }) {
   const [fontIndex, setFontIndex] = React.useState(0)
   const [now, setNow] = React.useState(new Date())
-  const [weather, setWeather] = React.useState({
-    status: 'loading',
-    error: null,
-    data: null
-  })
-
-  const fetchWeather = React.useCallback(async () => {
-    setWeather({ status: 'loading', error: null, data: null })
-    let data
-    try {
-      data = await findWeather({ search, degreeType })
-      setWeather({ status: 'complete', error: null, data })
-    } catch (error) {
-      setWeather({ status: 'error', error, data: null })
-    }
-  }, [search, degreeType])
-
-  React.useEffect(() => {
-    fetchWeather()
-  }, [fetchWeather])
-
-  useInterval(() => {
-    fetchWeather()
-  }, updateInterval)
+  const weather = useRequest(
+    findWeather,
+    { search, degreeType },
+    updateInterval
+  )
 
   useInterval(() => {
     setNow(new Date())
