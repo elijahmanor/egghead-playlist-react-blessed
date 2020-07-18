@@ -3,23 +3,9 @@ import figlet from 'figlet'
 import useInterval from '@use-it/interval'
 import weather from 'weather-js'
 import util from 'util'
-import { random } from 'lodash'
 import useDeepCompareEffect from 'use-deep-compare-effect'
 
-const findWeather = options => {
-  return new Promise(resolve =>
-    setTimeout(() => {
-      resolve([
-        {
-          location: { degreetype: options.degreeType },
-          current: { temperature: random(50, 100), skytext: 'Normal' },
-          forecast: [{}, { low: random(0, 50), high: random(50, 100) }]
-        }
-      ])
-    }, 1000)
-  )
-  return util.promisify(weather.find)(options)
-}
+const findWeather = util.promisify(weather.find)
 
 const FONTS = [
   'Straight',
