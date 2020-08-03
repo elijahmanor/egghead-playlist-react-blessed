@@ -13,6 +13,7 @@ export default function Box({ label, top, left, width, height, children }) {
         border: { fg: 'blue' }
       }}
     >
+      {`${JSON.stringify({ top, left, width, height }, null, 2)}`}
       {children}
     </box>
   )
