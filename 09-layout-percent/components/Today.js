@@ -6,6 +6,7 @@ import util from 'util'
 import useDeepCompareEffect from 'use-deep-compare-effect'
 import chalk from 'chalk'
 import gradient from 'gradient-string'
+import Box from './Box'
 
 const findWeather = util.promisify(weather.find)
 
@@ -72,8 +73,13 @@ const formatWeather = ([results]) => {
 export default function Today({
   updateInterval = 900000,
   search = 'Nashville, TN',
-  degreeType = 'F'
+  degreeType = 'F',
+  top,
+  left,
+  width,
+  height
 }) {
+  const boxProps = { top, left, width, height }
   const [fontIndex, setFontIndex] = React.useState(0)
   const [now, setNow] = React.useState(new Date())
   const weather = useRequest(
@@ -103,16 +109,7 @@ export default function Today({
   )
 
   return (
-    <box
-      top="center"
-      left="center"
-      width="65%"
-      height="65%"
-      border={{ type: 'line' }}
-      style={{
-        border: { fg: 'blue' }
-      }}
-    >
+    <Box label="Today" {...boxProps}>
       <text right={1}>{chalk.blue(date)}</text>
       <text top="center" left="center">
         {gradient.atlas.multiline(time)}
@@ -124,6 +121,6 @@ export default function Today({
           ? `Error: ${weather.error}`
           : formatWeather(weather.data)}
       </text>
-    </box>
+    </Box>
   )
 }
