@@ -1,30 +1,19 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import blessed from 'blessed'
 import { render } from 'react-blessed'
 import Today from './components/Today'
 import Box from './components/Box'
+import { Grid } from 'react-blessed-contrib'
 
 const App = () => {
   return (
-    <Fragment>
-      <Today
-        top={0}
-        left={0}
-        width="50%"
-        height="35%"
-        updateInterval={900000}
-      />
-      <Box
-        label="Recent Commits"
-        top={0}
-        left="50%"
-        width="50%"
-        height="50%"
-      ></Box>
-      <Box label="Time Log" top="35%" left={0} width="25%" height="65%"></Box>
-      <Box label="Pomodoro" top="35%" left="25%" width="25%" height="65%"></Box>
-      <Box label="GitHub" top="50%" left="50%" width="50%" height="50%"></Box>
-    </Fragment>
+    <Grid rows={12} cols={12}>
+      <Today row={0} col={0} rowSpan={4} colSpan={6} updateInterval={900000} />
+      <Box label="Recent Commits" row={0} col={6} rowSpan={6} colSpan={6}></Box>
+      <Box label="Time Log" row={4} col={0} rowSpan={8} colSpan={3}></Box>
+      <Box label="Pomodoro" row={4} col={3} rowSpan={8} colSpan={3}></Box>
+      <Box label="GitHub" row={6} col={6} rowSpan={6} colSpan={6}></Box>
+    </Grid>
   )
 }
 
