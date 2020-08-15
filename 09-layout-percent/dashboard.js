@@ -10,20 +10,20 @@ const App = () => {
       <Today
         top={0}
         left={0}
-        width="50%"
         height="35%"
+        width="50%"
         updateInterval={900000}
       />
       <Box
         label="Recent Commits"
         top={0}
         left="50%"
-        width="50%"
         height="50%"
+        width="50%"
       ></Box>
-      <Box label="Time Log" top="35%" left={0} width="25%" height="65%"></Box>
-      <Box label="Pomodoro" top="35%" left="25%" width="25%" height="65%"></Box>
-      <Box label="GitHub" top="50%" left="50%" width="50%" height="50%"></Box>
+      <Box label="Time Log" top="35%" left={0} height="65%" width="25%"></Box>
+      <Box label="Pomodoro" top="35%" left="25%" height="65%" width="25%"></Box>
+      <Box label="GitHub" top="50%" left="50%" height="50%" width="50%"></Box>
     </Fragment>
   )
 }
