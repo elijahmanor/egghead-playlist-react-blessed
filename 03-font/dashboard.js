@@ -9,7 +9,6 @@ const FONTS = [
   'Shimrod',
   'doom',
   'Big',
-  'Ogre',
   'Small',
   'Standard',
   'Bigfig',
