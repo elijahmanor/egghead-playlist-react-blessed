@@ -10,7 +10,7 @@ const App = () => {
 const screen = blessed.screen({
   autoPadding: true,
   smartCSR: true,
-  title: 'Developer Dashboard'
+  title: 'React Developer Dashboard'
 })
 
 screen.key(['escape', 'q', 'C-c'], () => process.exit(0))
